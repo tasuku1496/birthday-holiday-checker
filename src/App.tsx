@@ -35,20 +35,30 @@ const BirthdayHolidayChecker = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
       <div className="mb-4 flex space-x-4">
-        <input
-          type="text"
-          placeholder="月 (例: 1)"
+        <select
           value={month}
           onChange={(e) => setMonth(e.target.value)}
           className="border border-gray-300 rounded p-2"
-        />
-        <input
-          type="text"
-          placeholder="日 (例: 15)"
+        >
+          <option value="">月を選択してください</option>
+          {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
+            <option key={m} value={m.toString()}>
+              {m}
+            </option>
+          ))}
+        </select>
+        <select
           value={day}
           onChange={(e) => setDay(e.target.value)}
-          className="border border-gray-300 rounded p-2"
-        />
+          className="border border-gray-300 rounded p-2 w-50"
+        >
+          <option value="">日を選択してください</option>
+          {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
+            <option key={d} value={d.toString()}>
+              {d}
+            </option>
+          ))}
+        </select>
       </div>
       <button
         onClick={checkHolidays}
