@@ -1,4 +1,5 @@
 import { useState } from "react";
+import confetti from "canvas-confetti";
 
 type HolidayCheck = {
   year: number;
@@ -37,9 +38,48 @@ const BirthdayHolidayChecker = () => {
     setResults([]);
   };
 
+  const count = 200;
+  const defaults = {
+    origin: { y: 0.7 },
+  };
+
+  const fire = (particleRatio: number, opts: object) => {
+    confetti({
+      ...defaults,
+      ...opts,
+      particleCount: Math.floor(count * particleRatio),
+    });
+  };
+
+  const triggerConfetti = () => {
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+    fire(0.2, {
+      spread: 60,
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
+      <p className="mb-4">これからの誕生日が平日か土日かを教えてあげます</p>
       <div className="mb-4 flex space-x-4">
         <select
           value={month}
@@ -68,7 +108,10 @@ const BirthdayHolidayChecker = () => {
       </div>
       <div className="flex space-x-4">
         <button
-          onClick={checkHolidays}
+          onClick={() => {
+            checkHolidays();
+            triggerConfetti();
+          }}
           disabled={!month || !day}
           className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-300"
         >
