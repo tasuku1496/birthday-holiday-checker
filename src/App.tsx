@@ -31,6 +31,12 @@ const BirthdayHolidayChecker = () => {
     setResults(checks);
   };
 
+  const reset = () => {
+    setMonth("");
+    setDay("");
+    setResults([]);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
@@ -60,13 +66,23 @@ const BirthdayHolidayChecker = () => {
           ))}
         </select>
       </div>
-      <button
-        onClick={checkHolidays}
-        disabled={!month || !day}
-        className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-300"
-      >
-        チェックする
-      </button>
+      <div className="flex space-x-4">
+        <button
+          onClick={checkHolidays}
+          disabled={!month || !day}
+          className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-300"
+        >
+          チェックする
+        </button>
+        {results.length > 0 && (
+          <button
+            onClick={reset}
+            className="bg-gray-500 text-white py-2 px-4 rounded"
+          >
+            リセットする
+          </button>
+        )}
+      </div>
       {results.length > 0 && (
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">結果:</h2>
