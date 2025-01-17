@@ -20,7 +20,7 @@ const BirthdayHolidayChecker = () => {
     const checks: HolidayCheck[] = years.map((year) => {
       const date = `${year}-${birthDate}`;
       const parsedDate = new Date(date);
-      const isWeekend = parsedDate.getDay() === 0 || parsedDate.getDay() === 6;
+      const isWeekend = parsedDate.getDay() === 0 || parsedDate.getDay() === 6; // 0は土曜日、6は日曜日
 
       return {
         year,
