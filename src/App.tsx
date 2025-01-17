@@ -93,6 +93,7 @@ const BirthdayHolidayChecker = () => {
             </option>
           ))}
         </select>
+        <span className="text-base leading-[2.5rem]">月</span>
         <select
           value={day}
           onChange={(e) => setDay(e.target.value)}
@@ -105,6 +106,7 @@ const BirthdayHolidayChecker = () => {
             </option>
           ))}
         </select>
+        <span className="text-base leading-[2.5rem]">日</span>
       </div>
       <div className="flex space-x-4">
         <button
