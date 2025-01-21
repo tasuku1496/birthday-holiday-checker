@@ -11,6 +11,7 @@ const BirthdayHolidayChecker = () => {
   const [month, setMonth] = useState<string>("");
   const [day, setDay] = useState<string>("");
   const [results, setResults] = useState<HolidayCheck[]>([]);
+  const [showResults, setShowResults] = useState(false);
 
   const checkHolidays = () => {
     const birthDate = `${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
@@ -30,12 +31,14 @@ const BirthdayHolidayChecker = () => {
     });
 
     setResults(checks);
+    setShowResults(true);
   };
 
   const reset = () => {
     setMonth("");
     setDay("");
     setResults([]);
+    setShowResults(false);
   };
 
   return (
@@ -81,7 +84,7 @@ const BirthdayHolidayChecker = () => {
         >
           チェックする
         </button>
-        {results.length > 0 && (
+        {showResults && (
           <button
             onClick={reset}
             className="bg-gray-500 text-white py-2 px-4 rounded"
@@ -90,7 +93,7 @@ const BirthdayHolidayChecker = () => {
           </button>
         )}
       </div>
-      {results.length > 0 && (
+      {showResults && (
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">
             {month}月{day}日が誕生日のあなたは...
