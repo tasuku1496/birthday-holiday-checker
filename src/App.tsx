@@ -104,7 +104,7 @@ const BirthdayHolidayChecker = () => {
                 }`}
               >
                 {result.year}年の誕生日は{" "}
-                {result.isWeekend ? "土日祝日です 🎉" : "平日です 😔"}
+                {result.isWeekend ? "土日です 🎉" : "平日です 😔"}
               </li>
             ))}
           </ul>
