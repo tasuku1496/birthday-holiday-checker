@@ -92,7 +92,9 @@ const BirthdayHolidayChecker = () => {
       </div>
       {results.length > 0 && (
         <div className="mt-6">
-          <h2 className="text-xl font-semibold mb-2">結果:</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            {month}月{day}日が誕生日のあなたは...
+          </h2>
           <ul className="space-y-2">
             {results.map((result) => (
               <li
