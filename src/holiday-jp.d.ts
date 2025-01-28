@@ -1,4 +1,4 @@
-declare module 'holiday-jp' {
+declare module "holiday-jp" {
   export interface Holiday {
     date: Date;
     name: string;
