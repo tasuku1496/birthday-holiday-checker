@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isHoliday } from "holiday-jp";
 import { triggerConfetti } from "./triggerConfetti";
 
 type HolidayCheck = {
@@ -21,12 +22,17 @@ const BirthdayHolidayChecker = () => {
     const checks: HolidayCheck[] = years.map((year) => {
       const date = `${year}-${birthDate}`;
       const parsedDate = new Date(date);
-      const isWeekend = parsedDate.getDay() === 0 || parsedDate.getDay() === 6; // 0は土曜日、6は日曜日
+
+      // 土日かどうかを判定
+      const isWeekend = parsedDate.getDay() === 0 || parsedDate.getDay() === 6;
+
+      // 祝日かどうかを判定
+      const isHolidayFlag = isHoliday(parsedDate);
 
       return {
         year,
         date,
-        isWeekend,
+        isWeekend: isWeekend || isHolidayFlag,
       };
     });
 
@@ -107,7 +113,7 @@ const BirthdayHolidayChecker = () => {
                 }`}
               >
                 {result.year}年の誕生日は{" "}
-                {result.isWeekend ? "土日です 🎉" : "平日です 😔"}
+                {result.isWeekend ? "土日祝です 🎉" : "平日です 😔"}
               </li>
             ))}
           </ul>
