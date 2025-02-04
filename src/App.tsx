@@ -53,12 +53,7 @@ const BirthdayHolidayChecker = () => {
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
       <p className="mb-4">これからの誕生日が平日か土日かを教えてあげます</p>
       <div className="mb-4 flex space-x-4 items-center">
-        <MonthDaySelect
-          type="month"
-          value={month}
-          setValue={setMonth}
-          className="mr-4"
-        />
+        <MonthDaySelect type="month" value={month} setValue={setMonth} />
         <span className="text-base leading-[2.5rem]">月</span>
         <MonthDaySelect type="day" value={day} setValue={setDay} />
         <span className="text-base leading-[2.5rem]">日</span>
