@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { isHoliday } from "holiday-jp";
 import { triggerConfetti } from "./triggerConfetti";
+import MonthDaySelect from "./components/MonthDaySelect";
 
 type HolidayCheck = {
   year: number;
@@ -51,32 +52,15 @@ const BirthdayHolidayChecker = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
       <p className="mb-4">これからの誕生日が平日か土日かを教えてあげます</p>
-      <div className="mb-4 flex space-x-4">
-        <select
+      <div className="mb-4 flex space-x-4 items-center">
+        <MonthDaySelect
+          type="month"
           value={month}
-          onChange={(e) => setMonth(e.target.value)}
-          className="border border-gray-300 rounded p-2"
-        >
-          <option value="">月を選択してください</option>
-          {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
-            <option key={m} value={m.toString()}>
-              {m}
-            </option>
-          ))}
-        </select>
+          setValue={setMonth}
+          className="mr-4"
+        />
         <span className="text-base leading-[2.5rem]">月</span>
-        <select
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-          className="border border-gray-300 rounded p-2 w-50"
-        >
-          <option value="">日を選択してください</option>
-          {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
-            <option key={d} value={d.toString()}>
-              {d}
-            </option>
-          ))}
-        </select>
+        <MonthDaySelect type="day" value={day} setValue={setDay} />
         <span className="text-base leading-[2.5rem]">日</span>
       </div>
       <div className="flex space-x-4">
