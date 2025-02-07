@@ -2,6 +2,7 @@ import { useState } from "react";
 import { isHoliday } from "holiday-jp";
 import { triggerConfetti } from "./triggerConfetti";
 import MonthDaySelect from "./components/MonthDaySelect";
+import CustomButton from "./components/CustomButton";
 
 type HolidayCheck = {
   year: number;
@@ -59,23 +60,25 @@ const BirthdayHolidayChecker = () => {
         <span className="text-base leading-[2.5rem]">日</span>
       </div>
       <div className="flex space-x-4">
-        <button
+        <CustomButton
+          variantType="blue"
+          style={{ padding: "12px 24px" }}
           onClick={() => {
             checkHolidays();
             triggerConfetti();
           }}
           disabled={!month || !day}
-          className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-300"
         >
           チェックする
-        </button>
+        </CustomButton>
         {showResults && (
-          <button
-            onClick={reset}
-            className="bg-gray-500 text-white py-2 px-4 rounded"
+          <CustomButton
+            variantType="gray"
+            style={{ padding: "12px 24px" }}
+            onClick={() => reset()}
           >
             リセットする
-          </button>
+          </CustomButton>
         )}
       </div>
       {showResults && (
