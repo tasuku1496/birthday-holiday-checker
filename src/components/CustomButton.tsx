@@ -19,7 +19,7 @@ const CustomButton = ({
     ? "bg-gray-300 text-gray-600 cursor-not-allowed"
     : variantType === "blue"
     ? "bg-blue-500 text-white hover:bg-blue-700"
-    : "bg-gray-500 text-black hover:bg-gray-700";
+    : "bg-gray-500 text-white hover:bg-gray-700";
 
   const combinedClasses = `${baseClasses} ${variantClasses} ${className}`;
 
