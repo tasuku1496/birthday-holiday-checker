@@ -3,6 +3,7 @@ import { isHoliday } from "holiday-jp";
 import { triggerConfetti } from "./triggerConfetti";
 import MonthDaySelect from "./components/MonthDaySelect";
 import CustomButton from "./components/CustomButton";
+import ResultItem from "./components/ResultItem";
 
 type HolidayCheck = {
   year: number;
@@ -88,15 +89,7 @@ const BirthdayHolidayChecker = () => {
           </h2>
           <ul className="space-y-2">
             {results.map((result) => (
-              <li
-                key={result.year}
-                className={`p-2 rounded ${
-                  result.isWeekend ? "bg-green-100" : "bg-red-100"
-                }`}
-              >
-                {result.year}年の誕生日は{" "}
-                {result.isWeekend ? "土日祝です 🎉" : "平日です 😔"}
-              </li>
+              <ResultItem key={result.year} {...result} />
             ))}
           </ul>
         </div>
