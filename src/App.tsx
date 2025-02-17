@@ -89,7 +89,11 @@ const BirthdayHolidayChecker = () => {
           </h2>
           <ul className="space-y-2">
             {results.map((result) => (
-              <ResultItem key={result.year} {...result} />
+              <ResultItem
+                key={result.year}
+                year={result.year}
+                isWeekend={result.isWeekend}
+              />
             ))}
           </ul>
         </div>
