@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { isHoliday } from "holiday-jp";
 import { triggerConfetti } from "./triggerConfetti";
+import MonthDaySelect from "./components/MonthDaySelect";
+import CustomButton from "./components/CustomButton";
+import ResultItem from "./components/ResultItem";
 
 type HolidayCheck = {
   year: number;
@@ -51,52 +54,32 @@ const BirthdayHolidayChecker = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">誕生日休日チェッカー</h1>
       <p className="mb-4">これからの誕生日が平日か土日かを教えてあげます</p>
-      <div className="mb-4 flex space-x-4">
-        <select
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-          className="border border-gray-300 rounded p-2"
-        >
-          <option value="">月を選択してください</option>
-          {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
-            <option key={m} value={m.toString()}>
-              {m}
-            </option>
-          ))}
-        </select>
+      <div className="mb-4 flex space-x-4 items-center">
+        <MonthDaySelect type="month" value={month} setValue={setMonth} />
         <span className="text-base leading-[2.5rem]">月</span>
-        <select
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-          className="border border-gray-300 rounded p-2 w-50"
-        >
-          <option value="">日を選択してください</option>
-          {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
-            <option key={d} value={d.toString()}>
-              {d}
-            </option>
-          ))}
-        </select>
+        <MonthDaySelect type="day" value={day} setValue={setDay} />
         <span className="text-base leading-[2.5rem]">日</span>
       </div>
       <div className="flex space-x-4">
-        <button
+        <CustomButton
+          variantType="blue"
+          style={{ padding: "12px 24px" }}
           onClick={() => {
             checkHolidays();
             triggerConfetti();
           }}
           disabled={!month || !day}
-          className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-300"
         >
           チェックする
-        </button>
+        </CustomButton>
         {showResults && (
-          <button
-            onClick={reset}
-            className="bg-gray-500 text-white py-2 px-4 rounded"
+          <CustomButton
+            variantType="gray"
+            style={{ padding: "12px 24px" }}
+            onClick={() => reset()}
           >
             リセットする
-          </button>
+          </CustomButton>
         )}
       </div>
       {showResults && (
@@ -106,15 +89,11 @@ const BirthdayHolidayChecker = () => {
           </h2>
           <ul className="space-y-2">
             {results.map((result) => (
-              <li
+              <ResultItem
                 key={result.year}
-                className={`p-2 rounded ${
-                  result.isWeekend ? "bg-green-100" : "bg-red-100"
-                }`}
-              >
-                {result.year}年の誕生日は{" "}
-                {result.isWeekend ? "土日祝です 🎉" : "平日です 😔"}
-              </li>
+                year={result.year}
+                isWeekend={result.isWeekend}
+              />
             ))}
           </ul>
         </div>
