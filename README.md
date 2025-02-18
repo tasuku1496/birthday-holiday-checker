@@ -1,3 +1,11 @@
+# お誕生日休日チェッカー
+
+これからの誕生日が休みの日なのかどうかを確認するミニアプリです。
+
+## サービスURL
+https://birthday-holiday-checker.com/
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
