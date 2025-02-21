@@ -4,6 +4,7 @@ import { triggerConfetti } from "./triggerConfetti";
 import MonthDaySelect from "./components/MonthDaySelect";
 import CustomButton from "./components/CustomButton";
 import ResultItem from "./components/ResultItem";
+import Footer from "./components/Footer";
 
 type HolidayCheck = {
   year: number;
@@ -51,7 +52,7 @@ const BirthdayHolidayChecker = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">お誕生日休日チェッカー</h1>
       <p className="mb-4">これからの誕生日が平日か土日かを教えてあげます</p>
       <div className="mb-4 flex space-x-4 items-center">
@@ -98,6 +99,7 @@ const BirthdayHolidayChecker = () => {
           </ul>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
