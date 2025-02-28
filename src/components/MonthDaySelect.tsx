@@ -25,7 +25,7 @@ const MonthDaySelect: React.FC<Props> = ({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             displayEmpty
-            className="w-[200px]"
+            className="w-[120px]"
             sx={{ fontFamily: FONT_FAMILY, fontSize: "16px" }}
           >
             <MenuItem value="">月を選択</MenuItem>
@@ -50,7 +50,7 @@ const MonthDaySelect: React.FC<Props> = ({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             displayEmpty
-            className="w-[200px]"
+            className="w-[120px]"
             sx={{ fontFamily: FONT_FAMILY, fontSize: "16px" }}
           >
             <MenuItem value="">日を選択</MenuItem>
