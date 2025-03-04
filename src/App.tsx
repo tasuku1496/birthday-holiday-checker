@@ -52,8 +52,8 @@ const BirthdayHolidayChecker = () => {
   };
 
   return (
-    <div className="z-[-1] size-full bg-white">
-      <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 w-[375px] mx-auto z-10 px-2">
+    <div className="z-[-1] size-full">
+      <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 bg-opacity-90 w-[375px] mx-auto z-10 px-2">
         <h1 className="text-2xl font-bold mb-4">お誕生日休日チェッカー</h1>
         <p className="mb-4 text-center">
           これからの誕生日が
